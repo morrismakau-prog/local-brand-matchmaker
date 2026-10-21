@@ -1,0 +1,51 @@
+
+{
+  "brands": [
+    {
+      "id": "b1",
+      "name": "The Daily Grind Coffee",
+      "category": "Food & Drink",
+      "coordinates": [36.6912, -1.2645]
+    },
+    {
+      "id": "b2",
+      "name": "Alpha Fitness Gym",
+      "category": "Fitness & Health",
+      "coordinates": [36.7020, -1.2710]
+    },
+    {
+      "id": "b3",
+      "name": "Stitch Boutique",
+      "category": "Fashion & Apparel",
+      "coordinates": [36.6815, -1.2590]
+    }
+  ],
+  "creators": [
+    {
+      "id": "c1",
+      "name": "Nairobi Foodie",
+      "category": "Food & Drink",
+      "coordinates": [36.6850, -1.2690]
+    },
+    {
+      "id": "c2",
+      "name": "Fit With Kevin",
+      "category": "Fitness & Health",
+      "coordinates": [36.6995, -1.2685]
+    },
+    {
+      "id": "c3",
+      "name": "Trends By Maria",
+      "category": "Fashion & Apparel",
+      "coordinates": [36.6890, -1.2620]
+    }
+  ],
+  "matches": [
+    {
+      "id": "m1",
+      "brandId": "b1",
+      "creatorId": "c1",
+      "status": "pending"
+    }
+  ]
+}
