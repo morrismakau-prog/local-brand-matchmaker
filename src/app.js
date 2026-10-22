@@ -18,6 +18,7 @@ async function fetchDatabaseCollections() {
         
         return { brands, creators };
     } catch (error) {
+        console.warn("json-server offline. Attempting local file fallback...", error);
         try {
             const response = await fetch('./db.json');
             if (!response.ok) {
@@ -38,8 +39,8 @@ async function runDashboardApp() {
 
     const { brands, creators } = await fetchDatabaseCollections();
 
-    renderLocationMarkers(brands, '#6A5ACD');
-    renderLocationMarkers(creators, '#FF7F50');
+    renderLocationMarkers(brands, 'darkred');
+    renderLocationMarkers(creators, 'teal');
 }
 
 window.addEventListener('DOMContentLoaded', runDashboardApp);
