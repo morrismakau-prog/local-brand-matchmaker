@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1792835710263" clover="3.2.0">
+  <project timestamp="1792835710263" name="All files">
+    <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3" elements="14" coveredelements="13" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+    <file name="matchEngine.js" path="/home/user/local-brand-matchmaker/src/matchEngine.js">
+      <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <line num="2" count="9" type="stmt"/>
+      <line num="3" count="9" type="stmt"/>
+      <line num="5" count="9" type="stmt"/>
+      <line num="9" count="3" type="stmt"/>
+      <line num="10" count="9" type="stmt"/>
+      <line num="11" count="9" type="stmt"/>
+      <line num="12" count="9" type="stmt"/>
+      <line num="14" count="9" type="cond" truecount="2" falsecount="0"/>
+    </file>
+  </project>
+</coverage>

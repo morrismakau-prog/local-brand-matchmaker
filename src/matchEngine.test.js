@@ -1,6 +1,4 @@
 
-import assert from 'node:assert/strict';
-import { describe, test } from 'node:test';
 import { findLocalMatches } from './matchEngine.js';
 
 describe('Matchmaker Engine Unit Test Suite', () => {
@@ -19,22 +17,24 @@ describe('Matchmaker Engine Unit Test Suite', () => {
 
     test('should successfully match a creator in the same niche and close proximity', () => {
         const matches = findLocalMatches(mockBrand, mockCreators, 0.05);
-        assert.equal(matches.length, 1);
-        assert.equal(matches[0].name, "Nearby Foodie");
+        expect(matches.length).toBe(1);
+        expect(matches[0].name).toBe("Nearby Foodie");
     });
 
     test('should filter out creators that do not match the brand category niche', () => {
         const matches = findLocalMatches(mockBrand, mockCreators, 0.05);
         const fitnessMatch = matches.find(c => c.category === "Fitness & Health");
-        assert.equal(fitnessMatch, undefined);
+        expect(fitnessMatch).toBeUndefined();
     });
 
     test('should filter out creators that share a category but live outside the distance threshold', () => {
         const matches = findLocalMatches(mockBrand, mockCreators, 0.05);
         const distantMatch = matches.find(c => c.name === "Distant Foodie");
-        assert.equal(distantMatch, undefined);
+        expect(distantMatch).toBeUndefined();
     });
 });
+
+
 
 
 

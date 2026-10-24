@@ -2,10 +2,10 @@
 {
   "brands": [
     {
-      "id": "b1",
-      "name": "The Daily Grind Coffee",
+      "id": "b4",
+      "name": "Live Presentation Cafe",
       "category": "Food & Drink",
-      "coordinates": [36.6912, -1.2645]
+      "coordinates": [36.7100, -1.2550]
     },
     {
       "id": "b2",

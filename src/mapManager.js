@@ -6,8 +6,8 @@ const mapBounds = {
 };
 
 const locationGroups = {
-	brands: { color: '#c84b31', locations: [] },
-	creators: { color: '#187d78', locations: [] }
+	brands: { color: 'darkred', locations: [] },
+	creators: { color: 'teal', locations: [] }
 };
 
 let mapElement;
@@ -41,13 +41,24 @@ export function initializeMap() {
 	if (!mapElement) return;
 
 	mapElement.replaceChildren();
-	mapElement.classList.add('local-map');
-	mapElement.innerHTML = '<div class="map-grid" aria-hidden="true"></div><div class="map-place-label">NAIROBI</div><div class="map-markers"></div><div class="map-legend"><span><i class="legend-brand"></i>Brands</span><span><i class="legend-creator"></i>Creators</span></div>';
+	const gridDiv = document.createElement('div');
+	gridDiv.className = 'map-grid';
+	gridDiv.setAttribute('aria-hiden', 'true');
+
+	const labelDiv = document.createElement('div');
+	labelDiv.className = 'map-place-label';
+	labelDiv.textContent = 'NAIROBI';
+
+	const markersDiv = document.createElement('div');
+	markersDiv.className = 'map-markers';
+	mapElement.append(gridDiv, labelDiv, markersDiv);
 	renderMarkers();
 }
 
 export function renderLocationMarkers(locations, color) {
-	const groupName = color === '#6A5ACD' ? 'brands' : 'creators';
+	const groupName = color === 'darkred' ? 'brands' : 'creators';
 	locationGroups[groupName].locations = Array.isArray(locations) ? locations : [];
 	renderMarkers();
 }
+
+
