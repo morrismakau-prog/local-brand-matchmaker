@@ -6,7 +6,7 @@ A clean, easy-to-use web dashboard built to help local small businesses connect 
 
 ## Live Deployment Link
 - **Live Application URL:** [https://morrismakau-prog.github.io/local-brand-matchmaker/]
-
+- **Figma Design Wireframe:** https://www.figma.com/design/AOWMbl3Zm0fc7DmPCvIvFl/Untitled?timeline=keyframe&node-id=1-2&t=bGBqb3kNF5Jq2fsw-0
 ---
 
 ## Project Objectives & Overview
@@ -20,7 +20,7 @@ This platform solves a real-world problem for local marketing. Small businesses 
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 - HTML
 - CSS
 - JavaScript
