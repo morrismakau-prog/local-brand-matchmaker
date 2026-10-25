@@ -5,13 +5,37 @@ function calculateDistance(coord1, coord2) {
     return Math.sqrt(lonDiff * lonDiff + latDiff * latDiff);
 }
 
-export function findLocalMatches(brand, creatorsList, maxDistanceThreshold = 0.05) {
-return creatorsList.filter(creator =>{
-    const isCorrectCategory = creator.category === brand.category;
-    const separationDistance = calculateDistance(brand.coordinates, creator.coordinates);
-    const iswithinProximity = separationDistance <= maxDistanceThreshold;
+function normalizeCategory(category) {
+    if (typeof category !== 'string') return '';
 
-    return isCorrectCategory && iswithinProximity;
- });
+    return category
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, ' and ')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .replace(/\b(\w+?)s\b(?=\s*$)/g, '$1')
+        .trim();
+}
+
+export function findLocalMatches(brand, creatorsList, maxDistanceThreshold = 0.05) {
+    if (!brand || !Array.isArray(creatorsList)) return [];
+
+    const normalizedBrandCategory = normalizeCategory(brand.category);
+    const safeThreshold = Number.isFinite(maxDistanceThreshold) ? maxDistanceThreshold : 0.05;
+
+    return creatorsList.filter(creator => {
+        if (!creator || !Array.isArray(brand.coordinates) || !Array.isArray(creator.coordinates)) {
+            return false;
+        }
+
+        const normalizedCreatorCategory = normalizeCategory(creator.category);
+        const isCorrectCategory = normalizedCreatorCategory === normalizedBrandCategory &&
+            normalizedCreatorCategory.length > 0 && normalizedBrandCategory.length > 0;
+        const separationDistance = calculateDistance(brand.coordinates, creator.coordinates);
+        const isWithinProximity = separationDistance <= safeThreshold;
+
+        return isCorrectCategory && isWithinProximity;
+    });
 }
 
