@@ -1,52 +1,60 @@
-
 {
   "brands": [
     {
       "id": "b1",
       "name": "Pork and Go",
       "category": "Food & Drinks",
-      "coordinates": [36.7100, -1.2550]
+      "coordinates": [
+        36.6912,
+        -1.2645
+      ]
     },
     {
       "id": "b2",
       "name": "Alpha Fitness Gym",
       "category": "Fitness & Health",
-      "coordinates": [36.7020, -1.2710]
+      "coordinates": [
+        36.702,
+        -1.271
+      ]
     },
     {
       "id": "b3",
       "name": "Stitch Boutique",
       "category": "Fashion & Apparel",
-      "coordinates": [36.6815, -1.2590]
+      "coordinates": [
+        36.6815,
+        -1.259
+      ]
     }
   ],
   "creators": [
     {
       "id": "c1",
       "name": "Nairobi Foodie",
-      "category": "Food & Drink",
-      "coordinates": [36.6850, -1.2690]
+      "category": "Food & Drinks",
+      "coordinates": [
+        36.685,
+        -1.269
+      ]
     },
     {
       "id": "c2",
       "name": "Fit With Kevin",
       "category": "Fitness & Health",
-      "coordinates": [36.6995, -1.2685]
+      "coordinates": [
+        36.6995,
+        -1.2685
+      ]
     },
     {
       "id": "c3",
       "name": "Trends By Maria",
       "category": "Fashion & Apparel",
-      "coordinates": [36.6890, -1.2620]
-    }
-  ],
-  "matches": [
-    {
-      "id": "m1",
-      "brandId": "b1",
-      "creatorId": "c1",
-      "status": "pending"
+      "coordinates": [
+        36.689,
+        -1.262
+      ]
     }
   ]
 }
-
