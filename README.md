@@ -4,8 +4,7 @@ A clean, easy-to-use web dashboard built to help local small businesses connect 
 
 ---
 
-## Live Deployment Links
-- **GitHub Repository:** [https://github.com/morrismakau-prog/local-brand-matchmaker]
+## Live Deployment Link
 - **Live Application URL:** [https://morrismakau-prog.github.io/local-brand-matchmaker/]
 
 ---
