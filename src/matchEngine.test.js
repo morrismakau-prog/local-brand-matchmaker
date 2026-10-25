@@ -32,6 +32,17 @@ describe('Matchmaker Engine Unit Test Suite', () => {
         const distantMatch = matches.find(c => c.name === "Distant Foodie");
         expect(distantMatch).toBeUndefined();
     });
+
+    test('should match creators whose category spelling differs but represents the same niche', () => {
+        const brandWithPluralCategory = { ...mockBrand, category: 'Food & Drinks' };
+        const matches = findLocalMatches(brandWithPluralCategory, mockCreators, 0.05);
+        expect(matches.some(c => c.name === 'Nearby Foodie')).toBe(true);
+    });
+
+    test('should safely return no matches when inputs are missing or invalid', () => {
+        expect(findLocalMatches(null, mockCreators, 0.05)).toEqual([]);
+        expect(findLocalMatches(mockBrand, null, 0.05)).toEqual([]);
+    });
 });
 
 
