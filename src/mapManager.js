@@ -1,7 +1,7 @@
 const mapBounds = {
 	west: 36.67,
-	east: 36.71,
-	south: -1.28,
+	east: 36.73,
+	south: -1.31,
 	north: -1.25
 };
 
@@ -26,8 +26,11 @@ function renderMarkers() {
 			const marker = document.createElement('span');
 			marker.className = `map-marker map-marker-${groupName}`;
 			marker.style.setProperty('--marker-color', group.color);
-			marker.style.left = `${((longitude - mapBounds.west) / (mapBounds.east - mapBounds.west)) * 100}%`;
-			marker.style.top = `${((mapBounds.north - latitude) / (mapBounds.north - mapBounds.south)) * 100}%`;
+
+			const leftPercent = ((Number(longitude) - mapBounds.west) / (mapBounds.east - mapBounds.west)) * 100;
+			const topPercent = ((mapBounds.north - Number(latitude)) / (mapBounds.north - mapBounds.south)) * 100;
+			marker.style.left = `${Math.min(100, Math.max(0, leftPercent))}%`;
+			marker.style.top = `${Math.min(100, Math.max(0, topPercent))}%`;
 			marker.title = location.name;
 			marker.setAttribute('aria-label', location.name);
 			marker.setAttribute('role', 'img');
