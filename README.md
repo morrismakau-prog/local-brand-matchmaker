@@ -15,7 +15,7 @@ This platform solves a real-world problem for local marketing. Small businesses 
 ### Core Objectives Met:
 1. **API Integration:** Connects the front-end interface smoothly to a mockup backend data store.
 2. **Version Control:** Maintained an active engineering history using structured branch workflows.
-3. **UI/UX Design:** Implemented a balanced split-pane user layout focusing on a strict, professional 3-color palette limit.
+3. **UI/UX Design:** Implemented a balanced split-pane user layout focusing on a 3-colors slateblue, coral, lightseagreen.
 4. **Data Persistence:** Built persistent network routines to ensure data changes survive full browser reloads.
 
 ---
