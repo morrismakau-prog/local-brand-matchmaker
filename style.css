@@ -60,15 +60,6 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
-@media (min-width: 768px) {
-    .dashboard-container {
-        flex-direction: row;
-    }
-    
-    .sidebar-panel {
-        max-width: 400px;
-    }
-}
 .map-markers {
     position: absolute;
     top: 0;
@@ -106,7 +97,6 @@ h2 {
     padding: 1rem;
     margin-top: 1rem;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .match-card strong {
@@ -129,5 +119,38 @@ h2 {
     border-radius: 12px;
     margin-top: 0.4rem;
 }
+#submit-campaign-btn {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-indigo) !important;
+    color: white !important;
+    border: none;
+    padding: 0.8rem 1rem !important;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+#submit-campaign-btn:hover {
+    background-color: darkslateblue !important; 
+    transform: translateY(-1px);
+}
+
+#submit-campaign-btn:active {
+    transform: translateY(1px);
+}
+
+@media (min-width: 768px) {
+    .dashboard-container {
+        flex-direction: row;
+    }
+    .sidebar-panel {
+        max-width: 400px;
+    }
+}
+
 
 
