@@ -33,24 +33,17 @@ function displayMatchesInSidebar() {
             const matchCard = document.createElement('div');
             matchCard.className = 'match-card';
             matchCard.innerHTML = `
-            <div class="match-card-body">
+         <div class="match-card-body">
             <strong> Match Active!</strong>
             <p><strong>Brand:</strong> ${brand.name}</p>
-            <p><srong>Creator:</strong> ${creator.name}</p>
+            <p><strong>Creator:</strong> ${creator.name}</p>
             <span class="status-badge" style="background-color: lightseagreen;">Niche: ${creator.category}</span>
-            <button class="remove-match-btn" data-brand-id="${brand.id}" style="margin-top: 8px; display: block; color: coral; background: none; border: none; cursor: pointer; font-size: 0.8rem; padding: 0;"> Remove Match</button>
-           </div> 
+        </div> 
             `;
-
-            matchCard.querySelector('.remove-match-btn').addEventListener('click', () => {
-                matchCard.remove();
-                console.log(`Match removed successfully for brand reference ID: ${brand.id}`);
-            });
-
             trackerContainer.appendChild(matchCard);
-
+            });
         });
-    });
+   
 }
 
 function configureFormInputs() {
@@ -59,31 +52,50 @@ function configureFormInputs() {
 
     formContainer.innerHTML = `
     <h2>Create Collaboration</h2>
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-         <input type="text" id="input-brand-name" placeholder="Business Name" style="padding: 6px; border: 1px solid #ccc; border-radius: 4px;" value="Alpha Fitness Gym">
-     <select id="input-brand-niche" style="padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+         <input type="text" id="input-brand-name" placeholder="Business Name" style="padding: 8px; border: 1px solid lightgray; border-radius: 4px;" value="Alpha Fitness Gym">
+     <select id="input-brand-niche" style="padding: 8px; border: 1px solid lightgray; border-radius: 4px;">
          <option value="Fitness & Health">Fitness & Health</option>
-         <option value="Food & Drinks">Food & Drinks</option>
+         <option value="Food & Drink">Food & Drink</option>
+         <option value="Fashion & Apparel">Fashion & Apparel</option>
      </select>
-     <button id="submit-campaign-btn" style="background-color: slateblue; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; font-weight: bold;" Launch Campaign</button>
+     <button id="submit-campaign-btn">Launch Campaign</button>
    </div>   
 `;
 
-document.getElementById('submit-campaign-btn').addEventListener('click', () => {
+document.getElementById('submit-campaign-btn').addEventListener('click', async () => {
     const nameInput = document.getElementById('input-brand-name').value;
     const nicheInput = document.getElementById('input-brand-niche').value;
 
+    const uniqueId = 'b_' + Date.now();
+    const shiftAmount = (localBrands.length) * 0.005;
+
     const newBrand = {
-        id: 'b' + (localBrands.length + 1),
+        id: uniqueId,
         name: nameInput,
         category: nicheInput,
-        coordinates: [36.7020, -1.2710]
+        coordinates: [36.7020 + shiftAmount, -1.2710 - shiftAmount]
     };
 
-    localBrands.push(newBrand);
-    renderLocationMarkers(localBrands, 'darkred');
-    displayMatchesInSidebar();
- });
+    try {
+        const response = await fetch(`${API_BASE_URL}/brands`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newBrand)
+        });
+
+        if (response.ok) {
+            localBrands.push(newBrand);
+            renderLocationMarkers(localBrands, 'darkred');
+            displayMatchesInSidebar();
+        }
+    } catch (err) {
+        console.error("Database connection failure:",err);
+        localBrands.push(newBrand);
+            renderLocationMarkers(localBrands, 'darkred');
+            displayMatchesInSidebar();
+    }
+ }); 
 }
 
 async function runDashboardApp() {
@@ -101,3 +113,6 @@ async function runDashboardApp() {
 }
 
 window.addEventListener('DOMContentLoaded', runDashboardApp);
+
+
+
